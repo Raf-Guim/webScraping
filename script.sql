@@ -2,7 +2,7 @@
 -- -----------------------------------------------------
 -- Schema webScraping
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS webScraping DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
+CREATE SCHEMA IF NOT EXISTS webScraping DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE webScraping ;
 
 -- -----------------------------------------------------
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS relatorioDiario (
     posicao INT NOT NULL,
     colecao_nome VARCHAR(100) NOT NULL,
     volume INT NOT NULL,
-    variacao INT NOT NULL,
+    variacao FLOAT NOT NULL,
     preco DECIMAL(9,2) NOT NULL,
     vendas INT NOT NULL,
     donosUnicos INT NOT NULL,
