@@ -37,7 +37,20 @@ def raspagem():
             
             tabelaRaspagem[i].append(hoje)
             
-            #Criar nova lógica para validar informações (regras.txt) 
+            #Lógica para garantir que toodos os relatorios tenham 9 colunas
+            if len(tabelaRaspagem[i]) == 8:
+                if ('%' in tabelaRaspagem[i][3]):
+                    #Inserindo valor 0 para LISTAGEM
+                    tabelaRaspagem[i].insert(7, '0%')
+                else:
+                    #Inserindo valor 0 para VARIACÃO
+                    tabelaRaspagem[i].insert(3, '0%')
+            
+            if len(tabelaRaspagem[i]) == 7:
+                    #Inserindo valor 0 para LISTAGEM
+                    tabelaRaspagem[i].insert(3, '0%')
+                    #Inserindo valor 0 para VARIACÃO
+                    tabelaRaspagem[i].insert(7, '0%')
 
             i += 1
 

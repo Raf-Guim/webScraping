@@ -61,16 +61,15 @@ def criarRelatorio(relatorio):
 
     #Lógica para criar o relatório
 
-    #Acertar Replaces e validações de acordo com novas observações (analise_Raspagem.xlsx)
     report = {
             'posicao': int(relatorio[0]),
             'colecao_nome': relatorio[1],
-            'volume': int(relatorio[2].replace(',', '').replace(' ETH', '').replace('K', '000')),
-            'variacao': relatorio[3].replace('%', '').replace('+', '').replace(',', '').replace(' ', '').replace('&lt; ','').replace(' ETH',''),
-            'preco': relatorio[4].replace(' ETH', '').replace('&lt; ','').replace('K', '000').replace(' USDC','').replace('—', '0'),
-            'vendas': int(relatorio[5].replace(',', '')),
+            'volume': int(relatorio[2].replace(',', '').replace('K', '000').replace(' ', '').replace('ETH','')),
+            'variacao': float(relatorio[3].replace(',', '').replace('%', '')),
+            'preco': float(relatorio[4].replace(',', '').replace('K','000').replace(' ', '').replace(';','').replace('&lt','').replace('USDC','').replace('ETH','').replace('MATIC','').replace('—', '0')),
+            'vendas': int(relatorio[5].replace(',', '').replace('K','000').replace(' ','')),
             'donosUnicos': int(relatorio[6].replace('%','')),
-            'listagem': relatorio[7].replace('%', ''),
+            'listagem': float(relatorio[7].replace('%', '')),
             'data': relatorio[8]
         }    
     with Session(engine) as sessao, sessao.begin():

@@ -1,1 +1,1 @@
-SELECT * FROM relatorioDiario
+SELECT * FROM relatorioDiario order by posicao
