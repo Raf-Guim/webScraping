@@ -60,6 +60,8 @@ def criarRelatorio(relatorio):
 
 
     #Lógica para criar o relatório
+
+    #Acertar Replaces e validações de acordo com novas observações (analise_Raspagem.xlsx)
     report = {
             'posicao': int(relatorio[0]),
             'colecao_nome': relatorio[1],

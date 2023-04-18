@@ -36,11 +36,9 @@ def raspagem():
 
             
             tabelaRaspagem[i].append(hoje)
-            if (len(tabelaRaspagem[i]) == 8):
-                if ('%' in tabelaRaspagem[i][3]):
-                    tabelaRaspagem[i].insert(7, '0')
-                else:
-                    tabelaRaspagem[i].insert(3, '0')
+            
+            #Criar nova lógica para validar informações (regras.txt) 
+
             i += 1
 
 

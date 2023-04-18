@@ -1,0 +1,15 @@
+Obtendo dados:
+
+Tamanho = 8
+    Sem VARIACAO
+    ou
+    Sem LISTAGEM
+
+    Preco pode ser igual a '-' (ENTRA NO ARQUIVO SQL, so importa quando for entrar no banco)
+
+Tamanho = 7
+    Sem VARIACAO
+    e
+    Sem LISTAGEM
+
+    Preco pode ser igual a '-'
