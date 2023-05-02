@@ -12,14 +12,18 @@ from selenium.webdriver.chrome.options import Options
 
 from dados import url_origem
 
-def raspagem():
+def raspagem(rodar):
     try:
         options = Options()
         options.add_argument("force-device-scale-factor=0.25")
         driver = webdriver.Chrome(options=options)
         driver.get(url_origem)
+        action = ActionChains(driver)
 
         WebDriverWait(driver, 100).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'div.mGAUR')))
+        if rodar == 1:
+            action.send_keys(Keys.SPACE).send_keys(Keys.SPACE).send_keys(Keys.SPACE).perform()
+            time.sleep(3)
 
         tabelaWeb = driver.find_element(By.CSS_SELECTOR, 'div[role="table"]')
         linhas = tabelaWeb.find_elements(By.CSS_SELECTOR, 'a[role="row"]')

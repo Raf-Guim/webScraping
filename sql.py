@@ -64,9 +64,9 @@ def criarRelatorio(relatorio):
     report = {
             'posicao': int(relatorio[0]),
             'colecao_nome': relatorio[1],
-            'volume': int(relatorio[2].replace(',', '').replace('K', '000').replace(' ', '').replace('ETH','')),
+            'volume': int(relatorio[2].replace(',', '').replace('K', '000').replace(' ', '').replace('ETH','').replace('BNB','')),
             'variacao': float(relatorio[3].replace(',', '').replace('%', '')),
-            'preco': float(relatorio[4].replace(',', '').replace('K','000').replace(' ', '').replace(';','').replace('&lt','').replace('USDC','').replace('ETH','').replace('MATIC','').replace('—', '0')),
+            'preco': float(relatorio[4].replace(',', '').replace('K','000').replace(' ', '').replace(';','').replace('&lt','').replace('USDC','').replace('ETH','').replace('MATIC','').replace('BNB','').replace('—', '0')),
             'vendas': int(relatorio[5].replace(',', '').replace('K','000').replace(' ','')),
             'donosUnicos': int(relatorio[6].replace('%','')),
             'listagem': float(relatorio[7].replace('%', '')),
