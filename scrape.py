@@ -28,8 +28,6 @@ def raspagem(rodar):
                 Keys.SPACE).send_keys(Keys.SPACE).perform()
             time.sleep(3)
 
-        time.sleep(10)
-
         tabelaWeb = driver.find_element(By.CSS_SELECTOR, 'div[role="table"]')
         linhas = tabelaWeb.find_elements(By.CSS_SELECTOR, 'a[role="row"]')
 
@@ -38,7 +36,7 @@ def raspagem(rodar):
         hoje = datetime.datetime.now().strftime('%Y-%m-%d')
 
         for linha in linhas:
-            infos = linha.find_elements(By.CLASS_NAME, 'cLxTAA')
+            infos = linha.find_elements(By.CSS_SELECTOR, 'div.cLxTAA')
             tabelaRaspagem.append([])
 
             for info in infos:
