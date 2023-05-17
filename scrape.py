@@ -12,19 +12,21 @@ from selenium.webdriver.chrome.options import Options
 
 from dados import url_origem
 
+
 def raspagem(rodar):
     try:
         options = Options()
-        options.add_argument("force-device-scale-factor=0.25")
+        # options.add_argument("force-device-scale-factor=0.25")
         driver = webdriver.Chrome(options=options)
         driver.get(url_origem)
         action = ActionChains(driver)
 
-        WebDriverWait(driver, 100).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'div.mGAUR')))
+        WebDriverWait(driver, 100).until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, 'div.cLxTAA')))
         if rodar == 1:
-            action.send_keys(Keys.SPACE).send_keys(Keys.SPACE).send_keys(Keys.SPACE).perform()
+            action.send_keys(Keys.SPACE).send_keys(
+                Keys.SPACE).send_keys(Keys.SPACE).perform()
             time.sleep(3)
-
         tabelaWeb = driver.find_element(By.CSS_SELECTOR, 'div[role="table"]')
         linhas = tabelaWeb.find_elements(By.CSS_SELECTOR, 'a[role="row"]')
 
@@ -32,33 +34,36 @@ def raspagem(rodar):
         i = 0
         hoje = datetime.datetime.now().strftime('%Y-%m-%d')
         for linha in linhas:
-            infos = linha.find_elements(By.CLASS_NAME, 'mGAUR')
+            infos = linha.find_elements(By.CLASS_NAME, 'cLxTAA')
             tabelaRaspagem.append([])
 
             for info in infos:
                 tabelaRaspagem[i].append(info.get_attribute('innerHTML'))
 
-            
             tabelaRaspagem[i].append(hoje)
-            
-            #Lógica para garantir que toodos os relatorios tenham 9 colunas
+
+            # Lógica para garantir que toodos os relatorios tenham 9 colunas
             if len(tabelaRaspagem[i]) == 8:
                 if ('%' in tabelaRaspagem[i][3]):
-                    #Inserindo valor 0 para LISTAGEM
+                    # Inserindo valor 0 para LISTAGEM
                     tabelaRaspagem[i].insert(7, '0%')
                 else:
-                    #Inserindo valor 0 para VARIACÃO
+                    # Inserindo valor 0 para VARIACÃO
                     tabelaRaspagem[i].insert(3, '0%')
-            
+
             if len(tabelaRaspagem[i]) == 7:
-                    #Inserindo valor 0 para LISTAGEM
-                    tabelaRaspagem[i].insert(3, '0%')
-                    #Inserindo valor 0 para VARIACÃO
-                    tabelaRaspagem[i].insert(7, '0%')
+                # Inserindo valor 0 para LISTAGEM
+                tabelaRaspagem[i].insert(3, '0%')
+                # Inserindo valor 0 para VARIACÃO
+                tabelaRaspagem[i].insert(7, '0%')
 
             i += 1
+            print('RASPEI ', i, ' LINHAS')
 
+    except Exception as e:
+        print('Erro ao raspar dados: ', e)
 
     finally:
         driver.close()
+        print(tabelaRaspagem)
         return tabelaRaspagem
