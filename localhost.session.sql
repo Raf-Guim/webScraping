@@ -1,4 +1,6 @@
-SELECT * FROM relatorioDiario where dia = '2023-05-16'
+SELECT * FROM colecao
+
+-- delete from relatorioDiario where id = 1272
 
 
 -- delete from relatorioDiario where dia = '2023-05-02'

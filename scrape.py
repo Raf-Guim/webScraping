@@ -16,7 +16,7 @@ from dados import url_origem
 def raspagem(rodar):
     try:
         options = Options()
-        # options.add_argument("force-device-scale-factor=0.25")
+        options.add_argument("force-device-scale-factor=0.25")
         driver = webdriver.Chrome(options=options)
         driver.get(url_origem)
         action = ActionChains(driver)
@@ -27,12 +27,16 @@ def raspagem(rodar):
             action.send_keys(Keys.SPACE).send_keys(
                 Keys.SPACE).send_keys(Keys.SPACE).perform()
             time.sleep(3)
+
+        time.sleep(10)
+
         tabelaWeb = driver.find_element(By.CSS_SELECTOR, 'div[role="table"]')
         linhas = tabelaWeb.find_elements(By.CSS_SELECTOR, 'a[role="row"]')
 
         tabelaRaspagem = []
         i = 0
         hoje = datetime.datetime.now().strftime('%Y-%m-%d')
+
         for linha in linhas:
             infos = linha.find_elements(By.CLASS_NAME, 'cLxTAA')
             tabelaRaspagem.append([])
@@ -58,7 +62,6 @@ def raspagem(rodar):
                 tabelaRaspagem[i].insert(7, '0%')
 
             i += 1
-            print('RASPEI ', i, ' LINHAS')
 
     except Exception as e:
         print('Erro ao raspar dados: ', e)
