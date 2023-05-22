@@ -1,4 +1,4 @@
-SELECT * FROM colecao
+SELECT * FROM relatoriodiario
 
 -- delete from relatorioDiario where id = 1272
 
