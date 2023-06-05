@@ -1,5 +1,5 @@
 from scrape import raspagem
-import sql
+# import sql
 
 
 def main():
